@@ -13,11 +13,11 @@ function setup() {
 	createCanvas(canvasSize, canvasSize);
 	
 	noLoop();	
-	buttonStart.mousePressed(startLoop);
-	buttonStop.mousePressed(stopLoop);
-	buttonNext.mousePressed(draw);
-	buttonEmpty.mousePressed(emptyGrid);
-	buttonRandom.mousePressed(randomGrid);
+	buttonStart.mouseClicked(startLoop);
+	buttonStop.mouseClicked(stopLoop);
+	buttonNext.mouseClicked(draw);
+	buttonEmpty.mouseClicked(emptyGrid);
+	buttonRandom.mouseClicked(randomGrid);
 	cellGrid = new CellGrid(canvasSize, cellNumber);
 	cellGrid.createGrid();
 }
@@ -30,7 +30,7 @@ function stopLoop() {
 	noLoop();
 }
 
-function mousePressed() {
+function mouseClicked() {
 	cellGrid.cellPressed(mouseX, mouseY);
 	display();
 }
