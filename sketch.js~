@@ -1,5 +1,5 @@
 var canvasSize = 800;
-var cellNumber = 50;
+var cellNumber = 30;
 var cellGrid;
 
 function setup() {
