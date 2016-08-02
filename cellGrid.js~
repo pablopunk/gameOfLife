@@ -29,14 +29,6 @@ function CellGrid(canvasSize, cellNumber) {
 		}
 	}
 	
-	this.setRandom = function() {
-		for(var x=0; x<this.cellNumber; x++) {
-			for(var y=0; y<this.cellNumber; y++) {
-				this.cells[x][y].setRandomState();
-			}
-		}
-	}
-	
 	this.cellPressed = function(mX, mY) {
 		if((mX/this.cellSize)>=0 && (mX/this.cellSize)<this.cellNumber && (mY/this.cellSize)>=0 && (mY/this.cellSize)<this.cellNumber) {		
 			var x = parseInt(mX/this.cellSize);
