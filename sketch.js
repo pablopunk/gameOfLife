@@ -1,6 +1,7 @@
 var canvasSize = 800;
 var cellNumber = 50;
 var cellGrid;
+var isLoop = false;
 
 function setup() {
 	//INTERFACE
@@ -23,11 +24,17 @@ function setup() {
 }
 
 function startLoop() {
-	loop();
+	if(isLoop==false) {
+		loop();
+		isLoop=true;
+	}
 }
 
 function stopLoop() {
-	noLoop();
+	if(isLoop==true) {
+		noLoop();
+		isLoop=false;
+	}
 }
 
 function mouseClicked() {
