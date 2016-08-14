@@ -45,6 +45,14 @@ function CellGrid(canvasSize, cellNumber) {
 		}
 	}
 	
+	this.loadImage = function(alphaValues) {
+		for(var x=0; x<this.cellNumber; x++) {
+			for(var y=0; y<this.cellNumber; y++) {
+				this.cells[x][y].setState(alphaValues[y][x]);
+			}
+		}
+	}
+	
 	this.update = function() {
 		this.oldStates = new Array();
 		for(var x=0; x<this.cellNumber; x++) {

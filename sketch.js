@@ -1,5 +1,5 @@
 var canvasSize = 800;
-var cellNumber = 50;
+var cellNumber = 150;
 var cellGrid;
 var isLoop = false;
 
@@ -10,6 +10,7 @@ function setup() {
 	buttonNext = createButton("Next");
 	buttonEmpty = createButton("Empty");
 	buttonRandom = createButton("Random");
+	buttonImage = createButton("Image");
 	createP('');
 	createCanvas(canvasSize, canvasSize);
 	
@@ -19,8 +20,10 @@ function setup() {
 	buttonNext.mouseClicked(draw);
 	buttonEmpty.mouseClicked(emptyGrid);
 	buttonRandom.mouseClicked(randomGrid);
+	buttonImage.mouseClicked(parseImage);
 	cellGrid = new CellGrid(canvasSize, cellNumber);
 	cellGrid.createGrid();
+	
 }
 
 function startLoop() {
@@ -49,6 +52,13 @@ function emptyGrid() {
 
 function randomGrid() {
 	cellGrid.setRandom();
+	display();
+}
+
+function parseImage() {
+	var imageParser = new ImageParser();
+	var alpha = imageParser.getPixels("assets/image.jpg", canvasSize, cellNumber);
+	cellGrid.loadImage(alpha);
 	display();
 }
 

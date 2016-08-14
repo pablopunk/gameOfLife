@@ -15,6 +15,15 @@ function Cell(x, y, size) {
 		rect(x*size, y*size, size, size);
 	}
 	
+	this.setState = function(value) {
+		if(value<127.5) {
+			this.state=false;
+		}
+		else {
+			this.state=true;
+		}
+	}
+	
 	function setRandomState() {
 		var r = random(1);
 		if(r<0.5) {
