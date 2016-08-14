@@ -57,7 +57,7 @@ function randomGrid() {
 
 function parseImage() {
 	var imageParser = new ImageParser();
-	var alpha = imageParser.getPixels("assets/dbf.jpg", canvasSize, cellNumber);
+	var alpha = imageParser.getPixels("assets/image.jpg", canvasSize, cellNumber);
 	cellGrid.loadImage(alpha);
 	display();
 }
