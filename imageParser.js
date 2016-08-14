@@ -11,6 +11,8 @@ function ImageParser() {
 		context.drawImage(img, 0, 0, temporaryCanvas.width, temporaryCanvas.height);
 		var pixels = context.getImageData(0, 0, temporaryCanvas.width, temporaryCanvas.height);
 		
+		console.log('Loading pixels...');
+		
 		//Get the sum of RGB to calculate the greyscale
 		var pixelMatrix = new Array();
 		for(var x=0; x<img.height; x++) {
@@ -24,20 +26,24 @@ function ImageParser() {
 		for (var x=0; x<pixelMatrix.length; x++) {
 			rgbValues[x] = new Array();
 			for (var y=0; y<pixelMatrix[0].length; y+=4) {
-				rgbValues[x][parseInt(y/4)] = pixelMatrix[x][y];
+				var Y = parseInt(y/4);
+				rgbValues[x][Y] = pixelMatrix[x][y];
+				rgbValues[x][Y] += pixelMatrix[x][y];
+				rgbValues[x][Y] += pixelMatrix[x][y];
+				rgbValues[x][Y] = rgbValues[x][Y] / 3;
 			}
 		}	
 		
 		//Average the values into each cell
-		var rgbAverageValues = new Array();
+		var pixelsPerSquare = canvasSize/cellNumber;
 		
+		var rgbAverageValues = new Array();		
 		for(var x=0; x<cellNumber; x++) {
 			rgbAverageValues[x] = new Array();
 			for(var y=0; y<cellNumber; y++) {
 				rgbAverageValues[x][y] = 0;
 			}
 		}
-		var pixelsPerSquare = canvasSize/cellNumber;
 				
 		for(var x=0; x<rgbValues.length; x++) {
 			for(var y=0; y<rgbValues[x].length; y++) {
